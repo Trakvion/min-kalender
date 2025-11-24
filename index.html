@@ -578,8 +578,8 @@
         </div>
         <div class="cycle-info" id="cycleInfoText"></div>
        <div class="cycle-legend">
-  <img src="drop.png" alt="Mens" class="legend-icon" /> Mens
-  <img src="flower.png" alt="Fruktbar periode" class="legend-icon" /> Fruktbar periode (anslag)
+<img src="drop.png" alt="Mens" class="legend-icon" width="18" height="18" /> Mens
+<img src="flower.png" alt="Fruktbar periode" class="legend-icon" width="18" height="18" /> Fruktbar periode (anslag)
 </div>
       </div>
     </div>
@@ -779,18 +779,21 @@
      const icon = document.createElement("img");
       icon.className = "cycle-icon";
 
-      if (isPeriod) {
-        icon.classList.add("cycle-icon-period");
-        icon.src = "drop.png";          // filnavn må matche opplastet fil
-        icon.alt = "Mens";
-      } else if (isFertile) {
-        icon.classList.add("cycle-icon-fertile");
-        icon.src = "flower.png";        // filnavn må matche opplastet fil
-        icon.alt = "Fruktbar periode";
-      }
+      // sett størrelse direkte på elementet (overstyrer all CSS)
+icon.style.width = "20px";
+icon.style.height = "20px";
 
-      cell.appendChild(icon);
-    }
+if (isPeriod) {
+  icon.classList.add("cycle-icon-period");
+  icon.src = "drop.png";
+  icon.alt = "Mens";
+} else if (isFertile) {
+  icon.classList.add("cycle-icon-fertile");
+  icon.src = "flower.png";
+  icon.alt = "Fruktbar periode";
+}
+
+cell.appendChild(icon);
 
     function renderCalendarMonth() {
       calendarGrid.innerHTML = "";
