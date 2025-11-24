@@ -257,11 +257,18 @@
 
     /* Syklus-indikator i dagceller */
     .cycle-icon {
-      margin-top: 2px;
-      height: 14px;
-      width: 14px;
-      object-fit: contain;
-    }
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+
+  /* test: gi bakgrunn så vi ser at CSS faktisk brukes */
+  background: rgba(37, 99, 235, 0.15);  /* lys blå sirkel */
+  border-radius: 999px;
+
+  filter: brightness(0) contrast(1.8);
+}
 
     .cycle-period {
        /* hvis du vil gi litt rød tone rundt ikonet senere kan du gjøre det her */
