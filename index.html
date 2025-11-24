@@ -240,20 +240,19 @@
     .event-dot-annet { background: #f97316; }     /* oransje */
 
     /* Syklus-indikator i dagceller */
-    .cycle-indicator {
+    .cycle-icon {
       margin-top: 3px;
-      height: 4px;
-      border-radius: 999px;
-      width: 100%;
+      height: 16px;
+      width: 16px;
+      object-fit: contain;
     }
 
     .cycle-period {
-      background: #f87171; /* rød */
+       /* hvis du vil gi litt rød tone rundt ikonet senere kan du gjøre det her */
     }
 
     .cycle-fertile {
-      background: #22c55e; /* grønn */
-      opacity: 0.75;
+       /* hvis du vil gi litt rød tone rundt ikonet senere kan du gjøre det her */
     }
 
     .event-panel {
@@ -464,10 +463,13 @@
     }
 
     .legend-box {
-      width: 16px;
-      height: 4px;
-      border-radius: 999px;
-      display: inline-block;
+      display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  margin-right: 4px;
     }
 
     .legend-period { background: #f87171; }
@@ -553,9 +555,10 @@
         </div>
         <div class="cycle-info" id="cycleInfoText"></div>
         <div class="cycle-legend">
-          <span class="legend-box legend-period"></span> Mens
-          <span class="legend-box legend-fertile"></span> Fruktbar periode (anslag)
-        </div>
+         <div class="cycle-legend">
+  <img src="drop.png" alt="Mens" class="legend-icon" /> Mens
+  <img src="flower.png" alt="Fruktbar periode" class="legend-icon" /> Fruktbar periode (anslag)
+</div>
       </div>
     </div>
   </div>
@@ -751,14 +754,20 @@
 
       if (!isPeriod && !isFertile) return;
 
-      const bar = document.createElement("div");
-      bar.className = "cycle-indicator";
+     const icon = document.createElement("img");
+      icon.className = "cycle-icon";
+
       if (isPeriod) {
-        bar.classList.add("cycle-period");
+        icon.classList.add("cycle-icon-period");
+        icon.src = "drop.png";          // filnavn må matche opplastet fil
+        icon.alt = "Mens";
       } else if (isFertile) {
-        bar.classList.add("cycle-fertile");
+        icon.classList.add("cycle-icon-fertile");
+        icon.src = "flower.png";        // filnavn må matche opplastet fil
+        icon.alt = "Fruktbar periode";
       }
-      cell.appendChild(bar);
+
+      cell.appendChild(icon);
     }
 
     function renderCalendarMonth() {
